@@ -59,7 +59,7 @@ function determineWinner(userChoice, computerChoice) {
 }
 
 function playGame() {
-    let userChoice = getUserChoice('rock');
+    let userChoice = getUserChoice('paper');
     console.log(userChoice)
     let computerChoice = getComputerChoice();
     console.log(computerChoice)
