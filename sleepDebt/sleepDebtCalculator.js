@@ -26,7 +26,7 @@ function getSleepHours(day) {
     }
 }
 
-const getActualSleepHours = () => 8 + 7 + 6 + 7 + 7 + 10 + 10;
+const getActualSleepHours = () => 8 + 7 + 6 + 7 + 7 + 10 + 11;
     // let totalHoursSlept = 0
     // totalHoursSlept += getSleepHours('monday');
     // totalHoursSlept += getSleepHours('tuesday');
@@ -59,7 +59,7 @@ const calculateSleepDebt = () => {
 // console.log(getSleepHours('monday'));
 // console.log(getSleepHours('tuesday'));
 // console.log(getSleepHours('wednesday'));
-console.log(getActualSleepHours())
+// console.log(getActualSleepHours())
 
-console.log(idealHours(8))
+// console.log(idealHours(8))
 console.log(calculateSleepDebt());
