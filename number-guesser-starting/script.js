@@ -11,25 +11,33 @@ const generateTarget = () => {
 // console.log(generateTarget());
 let targetNumber = generateTarget();
 
+//getting the absolute distance function
+function getAbosoluteDistance(num1, num2) {
+    return Math.abs(num1 - num2);
+}
+
+// console.log(getAbosoluteDistance(11, 3))
 
 // compare guesses
 const compareGuesses = (userGuess, computerGuess, targetNumber) => {
-    const userDifference = Math.abs(userGuess - targetNumber);
-    const computerDifference = Math.abs(computerGuess - targetNumber);
+    const userDifference = getAbosoluteDistance(userGuess, targetNumber)
+    const computerDifference = getAbosoluteDistance(computerGuess, targetNumber)
     
-    
+    if(userGuess > 9) {
+       return alert('The number you chose is out of range!')
+    }
+
     if(userDifference <= computerDifference) {
         return true; //User wins
     } else {
         return false; //Computer wins
     }
 
-
 };
 
 
 
-// console.log(compareGuesses(2, 5,targetNumber));
+// console.log(compareGuesses(10, 5,targetNumber));
 
 function updateScore(enterString) {
 
@@ -49,3 +57,4 @@ function advanceRound() {
 
 // advanceRound();
 // console.log(currentRoundNumber);
+
