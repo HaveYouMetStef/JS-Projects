@@ -23,6 +23,7 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
+
 // Add your functions below:
 //validate credit card function
 const validateCred = arr => {
@@ -55,6 +56,71 @@ const validateCred = arr => {
     
 }
 
+// find the invalid cards
+const findInvalidCards = nestedArr => {
+    let result = [];
+
+    /*
+    for loop example
+    for (let i = 0; i < nestedArr.length; i++) {
+    const card = nestedArr[i]
+    
+    if (!validateCred(card.slice())) {
+    result.push(card);
+    }
+    }
+    */
+
+    nestedArr.filter(card => {
+        if (!validateCred(card.slice())) {
+            result.push(card);
+        }
+    })
+
+    return result;
+
+    // for (let i = 0; i < nestedArr.length; i++) {
+    //     if (i === )
+    // }
+}
+
+//invalid card companies function
+const idInvalidCardCompanies = arr => {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        const card = arr[i];
+        const firstDigit = card[0];
+
+        let company;
+        if(firstDigit === 3) {
+            company = `Amex (American Express)`
+        } else if ( firstDigit === 4) {
+            company = `Visa`
+        } else if (firstDigit === 5) {
+            company = `Mastercard`;
+        } else if (firstDigit === 6) {
+            company = `Discover`
+        }else {
+            console.log(`Company not found for card: ${card}`);
+        }
+
+        if(!result.includes(company)) {
+            result.push(company)
+        }
+    }
+
+    return result;
+
+}
+console.log(idInvalidCardCompanies(batch));
+
+
+
+// console.log(findInvalidCards(batch));
+
+
+/*
 console.log(validateCred(valid1));
 console.log(validateCred(valid2));
 console.log(validateCred(valid3));
@@ -72,6 +138,7 @@ console.log(validateCred(mystery2));
 console.log(validateCred(mystery3));
 console.log(validateCred(mystery4));
 console.log(validateCred(mystery5));
+*/
 
 
 
