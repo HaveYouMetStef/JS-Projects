@@ -27,16 +27,62 @@ function pAequorFactory(specimenNum, dna) {
       }
       this.dna[randomIndex] = newBase;
       return this.dna
+    },
+
+    //compare method
+    compareDNA(otherPAequor) {
+       let identicalBases = 0;
+
+       //loop through the array and compare the bases
+       for(let i = 0; i < this.dna.length; i++) {
+        if(this.dna[i] === otherPAequor.dna[i]) {
+          identicalBases++;
+        }
+       }
+
+       const percentage = ((identicalBases / this.dna.length) * 100).toFixed(2);
+       console.log(`specimen #${this.specimenNum} and specimen #${otherPAequor.specimenNum} have ${percentage}% DNA in common.`)
+    },
+
+    willLikelySurvive() {
+      const survivalBases = this.dna.filter(base => base === 'C' || base === 'G');
+      const survivalRate = (survivalBases.length / this.dna.length) * 100;
+
+      return survivalRate >= 60;
     }
   };
 }
 
+const survivalPAequor = [];
+
+let specimenCount = 1;
+
+while(survivalPAequor.length < 30) {
+  const newPAequor = pAequorFactory(specimenCount, mockUpStrand());
+
+  if (newPAequor.willLikelySurvive()) {
+    survivalPAequor.push(newPAequor);
+    specimenCount++;
+  }
+}
+
+console.log(`Generated ${survivalPAequor.length} survivable P. aequor:`)
+console.log(survivalPAequor);
+
+const specimen1 = pAequorFactory(1, mockUpStrand())
+const specimen2 = pAequorFactory(2, mockUpStrand())
+
+console.log('Specimen 1 DNA:', specimen1.dna)
+console.log('Specimen 2 DNA:', specimen2.dna)
+
+specimen1.compareDNA(specimen2);
+/*
 const organism = pAequorFactory(1, mockUpStrand());
 
 console.log('Original DNA:', organism.dna);
 organism.mutate()
 console.log('Mutated DNA:', organism.dna);
-
+*/
 
 
 
